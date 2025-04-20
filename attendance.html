@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Attendance</title>
+    <link rel="stylesheet" href="static/style.css">
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar">
+    <img class="ims-logo" src="https://i.ibb.co/NnGKnYZ7/download.jpg" alt="IMS Noida Logo">
+    <div class="navbar-title">IMS Noida College Bot</div>
+</nav>
+
+<!-- Dashboard Layout -->
+<div class="dashboard-container">
+    <div class="main-content">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <ul>
+                <li><a href="/dashboard">Dashboard</a></li>
+                <li><a href="/attendance" class="active">Attendance</a></li>
+                <li><a href="/results">Results</a></li>
+                <li><a href="/courses">Courses</a></li>
+                <li><a href="/books">Books</a></li>
+                <li><a href="/chat">Chat</a></li>
+            </ul>
+        </div>
+
+        <!-- Content Panel -->
+        <div class="dashboard-panel">
+            <h2>Attendance - {{ name }}</h2>
+<p>View your attendance records for all your courses.</p>
+
+<!-- Attendance Table -->
+<table class="styled-table">
+    <thead>
+        <tr>
+            <th>Course Name</th>
+            <th>Attendance Percentage</th>
+            <th>Status</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for course, percent in attendance.items() %}
+        <tr>
+            <td>{{ course }}</td>
+            <td>{{ percent }}</td>
+            <td>
+                {% set val = percent.replace('%', '') | int %}
+                {% if val >= 85 %}
+                    <span class="status-green">Good</span>
+                {% elif val >= 70 %}
+                    <span class="status-yellow">Satisfactory</span>
+                {% else %}
+                    <span class="status-red">Needs Improvement</span>
+                {% endif %}
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<!-- Attendance Summary -->
+<div class="attendance-summary">
+    <h3>Attendance Summary</h3>
+    <p>Total Courses: {{ attendance | length }}</p>
+    <p>Overall Attendance: {{ overall_attendance }}%</p>
+</div>
+        </div>
+    </div>
+</div>
+
+<!-- Footer -->
+<footer>
+    <p>© 2025 IMS Noida College Bot. All rights reserved.</p>
+</footer>
+
+</body>
+</html>

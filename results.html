@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Results</title>
+    <link rel="stylesheet" href="static/style.css">
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar">
+    <img class="ims-logo" src="https://i.ibb.co/NnGKnYZ7/download.jpg" alt="IMS Noida Logo">
+    <div class="navbar-title">IMS Noida College Bot</div>
+</nav>
+
+<!-- Dashboard Layout -->
+<div class="dashboard-container">
+    <div class="main-content">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <ul>
+                <li><a href="/dashboard">Dashboard</a></li>
+                <li><a href="/attendance">Attendance</a></li>
+                <li><a href="/results" class="active">Results</a></li>
+                <li><a href="/courses">Courses</a></li>
+                <li><a href="/books">Books</a></li>
+                <li><a href="/chat">Chat</a></li>
+            </ul>
+        </div>
+
+        <!-- Content Panel -->
+        <div class="dashboard-panel">
+            <h2>Results - {{ name }}</h2>
+            <p>Check your academic results for each subject along with your Total GPA.</p>
+
+            <!-- Results Table -->
+            <table class="styled-table">
+                <thead>
+                    <tr>
+                        <th>Subject</th>
+                        <th>Grade</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for subject, grade in results.items() %}
+                    <tr>
+                        <td>{{ subject }}</td>
+                        <td>{{ grade }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+
+            <!-- GPA Section -->
+            <div class="gpa-summary">
+                <h3>Total GPA</h3>
+                <p>Your overall GPA is: <strong>{{ total_gpa }}</strong></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Footer -->
+<footer>
+    <p>© 2025 IMS Noida College Bot. All rights reserved.</p>
+</footer>
+
+</body>
+</html>

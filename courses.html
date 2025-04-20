@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Courses - IMS Noida College Bot</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+    <!-- Header Section -->
+    <header class="header">
+        <img src="https://i.ibb.co/NnGKnYZ7/download.jpg" alt="IMS Noida Logo" class="logo">
+        <h1>IMS Noida College Bot</h1>
+    </header>
+
+    <!-- Navigation Sidebar -->
+    <div class="sidebar">
+        <ul>
+            <li><a href="/dashboard">Dashboard</a></li>
+            <li><a href="/attendance">Attendance</a></li>
+            <li><a href="/results">Results</a></li>
+            <li><a href="/courses" class="active">Courses</a></li>
+            <li><a href="/books">Books</a></li>
+            <li><a href="/chat">Chat</a></li>
+        </ul>
+    </div>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="content-wrapper">
+            <h2 class="section-title">Your Courses - {{ name }}</h2>
+            <div class="cards-container">
+                {% for course in courses %}
+                <div class="card">
+                    <h3>{{ course }}</h3>
+                    <p>This course is part of your current curriculum. Stay consistent and explore deeply!</p>
+                </div>
+                {% else %}
+                <p>No courses found for your profile.</p>
+                {% endfor %}
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer Section -->
+    <footer class="footer">
+        <p>&copy; 2025 IMS Noida College Bot. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>

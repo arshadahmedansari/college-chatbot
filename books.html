@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Books - IMS Noida College Bot</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+    <!-- Header -->
+    <header class="header">
+        <img src="https://i.ibb.co/NnGKnYZ7/download.jpg" alt="IMS Noida Logo" class="logo">
+        <h1>IMS Noida College Bot</h1>
+    </header>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <ul>
+            <li><a href="/dashboard">Dashboard</a></li>
+            <li><a href="/attendance">Attendance</a></li>
+            <li><a href="/results">Results</a></li>
+            <li><a href="/courses">Courses</a></li>
+            <li><a href="/books" class="active">Books</a></li>
+            <li><a href="/chat">Chat</a></li>
+        </ul>
+    </div>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="content-wrapper">
+            <h2 class="section-title">Library Books</h2>
+
+            {% if books %}
+            <div class="cards-container">
+                {% for book in books %}
+                <div class="card">
+                    <h3>{{ book.title }}</h3>
+                    <p><strong>Author:</strong> {{ book.author }}</p>
+                    <p><strong>Subject:</strong> {{ book.subject }}</p>
+                    <p>{{ book.description }}</p>
+                </div>
+                {% endfor %}
+            </div>
+            {% else %}
+            <p>No books available currently.</p>
+            {% endif %}
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2025 IMS Noida College Bot. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
